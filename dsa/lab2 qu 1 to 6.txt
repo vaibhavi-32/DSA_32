@@ -1,0 +1,189 @@
+// 1) Create a Null Matrix of 3X3
+
+#include <stdio.h>
+
+int main() {
+    int size = 3;
+    int matrix[3][3] = {
+        {1, 0, 0},
+        {0, 1, 0},
+        {0, 0, 1}
+    };
+
+    int isIdentity = 1; 
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if (i == j && matrix[i][j] != 1) {
+                isIdentity = 0;
+            }
+            else if (i != j && matrix[i][j] != 0) {
+                isIdentity = 0;
+            }
+        }
+    }
+
+    if (isIdentity == 1)
+        printf("The matrix is an Identity Matrix.\n");
+    else
+        printf("The matrix is NOT an Identity Matrix.\n");
+
+    return 0;
+}
+
+
+
+
+
+// 2) Create an Identity Matrix of 4X4
+
+#include <stdio.h>
+
+int main() {
+    int identityMatrix[4][4];
+   for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            identityMatrix[i][j] = (i == j) ? 1 : 0;
+        }
+    }
+    printf("4x4 Identity Matrix:\n");
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            printf("%d ", identityMatrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+ 
+ 
+// 3) Check that a matrix is Square or Not
+
+#include <stdio.h>
+
+int main() {
+    int rows = 3;
+    int cols = 3;
+
+    int matrix[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    if (rows == cols) {
+        printf("The matrix is square.\n");
+    } else {
+        printf("The matrix is not square.\n");
+    }
+
+    return 0;
+}
+
+
+
+
+//4) Check that a matrix is Identity Matrix or Not.
+
+#include <stdio.h>
+
+int main() {
+    int size = 3;
+    int matrix[3][3] = {
+        {1, 0, 0},
+        {0, 1, 0},
+        {0, 0, 1}
+    };
+
+    int isIdentity = 1; 
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if (i == j && matrix[i][j] != 1) {
+                isIdentity = 0;
+            }
+            else if (i != j && matrix[i][j] != 0) {
+                isIdentity = 0;
+            }
+        }
+    }
+
+    if (isIdentity == 1)
+        printf("The matrix is an Identity Matrix.\n");
+    else
+        printf("The matrix is NOT an Identity Matrix.\n");
+
+    return 0;
+}
+
+
+// 5) Write a program to implement a 2D Array by defining its elements and display the 
+elements of the 2D Array.
+
+ #include <stdio.h>
+
+int main() {
+    int matrix[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    printf("Elements of the 2D Array:\n");
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+//) Write a program to implement a 2D Array by taking inputs from user and display the 
+elements of the 2D Array
+
+#include <stdio.h>
+
+int main() {
+    int rows, cols;
+
+    // Ask the user for dimensions
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    int matrix[rows][cols];  // Variable Length Array (VLA) in C99 and above
+
+    // Input elements from user
+    printf("Enter elements of the %dx%d matrix:\n", rows, cols);
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            printf("Element [%d][%d]: ", i, j);
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    // Display the matrix
+    printf("\nMatrix elements are:\n");
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
