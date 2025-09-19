@@ -1,0 +1,158 @@
+// QU.2
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* head = NULL;
+
+void insertAtBeginning(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = head;
+    head = newNode;
+}
+
+void insertAtEnd(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    if (head == NULL) {
+        head = newNode;
+        return;
+    }
+    struct Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+void deleteFromBeginning() {
+    if (head == NULL) return;
+    struct Node* temp = head;
+    head = head->next;
+    free(temp);
+}
+
+void deleteFromEnd() {
+    if (head == NULL) return;
+    if (head->next == NULL) {
+        free(head);
+        head = NULL;
+        return;
+    }
+    struct Node* temp = head;
+    while (temp->next->next != NULL) {
+        temp = temp->next;
+    }
+    free(temp->next);
+    temp->next = NULL;
+}
+
+int search(int key) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        if (temp->data == key) return 1;
+        temp = temp->next;
+    }
+    return 0;
+}
+
+void display() {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    insertAtBeginning(10);
+    insertAtBeginning(20);
+    insertAtEnd(30);
+    insertAtEnd(40);
+    display();
+
+    deleteFromBeginning();
+    display();
+
+    deleteFromEnd();
+    display();
+
+    if (search(30)) {
+        printf("Found\n");
+    } else {
+        printf("Not Found\n");
+    }
+
+    return 0;
+}
+
+
+
+//QU 3
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct LinkedList {
+    struct Node* head;
+    struct Node* tail;
+};
+
+void insertAtEnd(struct LinkedList* list, int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+
+    if (list->head == NULL) {
+        list->head = newNode;
+        list->tail = newNode;
+    } else {
+        list->tail->next = newNode;
+        list->tail = newNode;
+    }
+}
+
+void display(struct LinkedList* list) {
+    struct Node* temp = list->head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct LinkedList list;
+    list.head = NULL;
+    list.tail = NULL;
+
+    insertAtEnd(&list, 10);
+    insertAtEnd(&list, 20);
+    insertAtEnd(&list, 30);
+
+    display(&list);
+
+    return 0;
+}
+
+
+
+
+
+
+
